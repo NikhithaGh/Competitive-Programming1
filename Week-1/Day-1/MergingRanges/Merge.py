@@ -14,7 +14,10 @@ def merge_ranges(ranges):
 			b = mlist.pop()
 			print(b)
 			if b[1] >= tup[0]:
-				new_tup = tuple([b[0], tup[1]])
+				if b[1]>tup[1]:
+					new_tup = tuple([b[0], b[1]])
+				else:	
+					new_tup = tuple([b[0], tup[1]])
 				mlist.append(new_tup)
 				print(mlist)
 			else:
@@ -26,7 +29,7 @@ def merge_ranges(ranges):
 
 if __name__ == '__main__':
 
-	l = [(1, 6), (3, 5), (4, 8), (10, 12),(9, 10)]
+	l = [(1, 6), (3, 8), (4, 6), (10, 12),(9, 13)]
 	print("Original list of ranges: {}".format(l))
 	merged_list = merge_ranges(l)
 	print("List of ranges after merge_ranges: {}".format(merged_list))
